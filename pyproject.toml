@@ -1,0 +1,108 @@
+# bindable-gate/pyproject.toml
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bindable-gate"
+version = "0.4.1"
+description = "Bindable Gate: every tool call your agent makes is reviewed by Bindable before it runs"
+readme = "README.pypi.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{ name = "Bindable AI LLC" }]
+requires-python = ">=3.11"
+dependencies = [
+    "bindable>=0.1.4",
+    "mcp",
+    # Declared because core/client.py, mcp/receipts.py, mcp/trackpoint.py,
+    # mcp/proxy.py and library/gate.py import it directly. A direct import on a
+    # transitive dependency breaks the day the intermediary drops it.
+    "httpx>=0.27",
+    # The agent's signature over its Proposal and the local Track's hash chain
+    # (bindable_gate.contract, the one place either is done). RFC 8785 from a
+    # maintained library, Apache-2.0, rather than a canonicaliser of our own.
+    "rfc8785>=0.1.4",
+    "cryptography>=43",
+]
+
+[project.scripts]
+bindable-gate = "bindable_gate.cli:main"
+
+[project.optional-dependencies]
+# Pinned exactly, as the platform pins them: an unpinned linter means a release
+# of it turns the checks red with no change to this repository.
+dev = [
+    "pytest==9.1.1",
+    "mypy==2.3.1",
+    "ruff==0.16.8",
+    # Builds the wheel and the sdist that tests/test_published_packages.py scans.
+    "build==1.6.1",
+]
+
+# The framework adapters, one extra each, pinned to the versions their tests run
+# against (scripts/test_frameworks.sh). A customer installs only its own.
+langgraph = [
+    "langgraph>=1.2,<2",
+    "langchain>=1.0,<2",
+]
+adk = [
+    "google-adk>=2.13,<3",
+]
+openai-agents = [
+    "openai-agents>=0.22.3,<0.25",
+]
+# AutoGen is archived at 0.7.5. For MCP tools, autogen-ext[mcp] needs mcp<2.
+autogen = [
+    "autogen-agentchat>=0.7.5,<0.8",
+    "autogen-core>=0.7.5,<0.8",
+    "autogen-ext>=0.7.5,<0.8",
+]
+crewai = [
+    "crewai>=1.15.3,<2",
+]
+semantic-kernel = [
+    "semantic-kernel>=1.46,<2",
+]
+agent-framework = [
+    "agent-framework-core>=1.0,<2",
+]
+
+[project.urls]
+Homepage = "https://bindable-ai.com"
+Documentation = "https://docs.bindable-ai.com"
+
+# The wheel and the sdist are what customers get, so they carry the package and
+# nothing else. src/bindable_gate/hosted is the service Bindable runs, not a
+# customer's: it is built from hosted/pyproject.toml, never published, and the
+# image installs it beside this package. tests/test_published_packages.py fails
+# if either archive carries more.
+[tool.hatch.build.targets.wheel]
+packages = ["src/bindable_gate"]
+exclude = ["src/bindable_gate/hosted"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src/bindable_gate", "LICENSE", "README.pypi.md", "pyproject.toml"]
+exclude = ["src/bindable_gate/hosted"]
+
+# The framework adapters import frameworks this package does not depend on. Each
+# is type-checked in its own framework's venv; here their imports are unknown.
+[[tool.mypy.overrides]]
+module = [
+    "langgraph.*",
+    "langchain.*",
+    "langchain_core.*",
+    "google.adk.*",
+    "google.genai.*",
+    "agents",
+    "agents.*",
+    "autogen_core.*",
+    "autogen_core",
+    "crewai",
+    "crewai.*",
+    "semantic_kernel",
+    "semantic_kernel.*",
+    "agent_framework",
+    "agent_framework.*",
+]
+ignore_missing_imports = true

@@ -1,0 +1,41 @@
+{
+  "name": "@bindable-ai/gate",
+  "version": "0.1.0",
+  "description": "The Bindable Gate core: builds the Proposal, calls Bindable, enforces the verdict, reports the outcome, fails closed, signs.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "homepage": "https://docs.bindable-ai.com",
+  "keywords": [
+    "bindable",
+    "gate",
+    "agent",
+    "action-review"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@noble/curves": "2.4.0",
+    "canonicalize": "5.1.0"
+  }
+}

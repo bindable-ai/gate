@@ -1,0 +1,53 @@
+name: Accountability issue
+description: The Gate let an action run that it should have held, held one it should have let run, or recorded it wrongly.
+title: "[Accountability] "
+labels: ["accountability"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste a real Gate credential, API key or private key. For a security problem, email security@bindable-ai.com instead.
+  - type: dropdown
+    id: gate
+    attributes:
+      label: Which Gate
+      options:
+        - Runtime Plugin Gate (OpenClaw)
+        - Runtime Plugin Gate (NemoClaw)
+        - Library Gate (Python)
+        - Local MCP Gate
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package and version
+      placeholder: "@bindable-ai/gate-openclaw 0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: what
+    attributes:
+      label: What happened
+      options:
+        - An action ran that Bindable blocked, or never reviewed
+        - An action was held that Bindable released
+        - The Track or an offline record is wrong or missing
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: The tool, what you expected, what happened, and the Receipt ID if there is one. Logs with the credential removed.
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: How the Gate was running
+      options:
+        - Connected to Bindable
+        - Offline (Bindable unreachable)
+        - Standalone (no credential, local Track only)

@@ -1,0 +1,24 @@
+{
+  "name": "bindable-gate-js",
+  "private": true,
+  "description": "The TypeScript packages of the Bindable Gate. The Python package lives at the repository root.",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/gate",
+    "packages/gate-openclaw"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm test --workspaces",
+    "typecheck": "npm run typecheck --workspaces"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}

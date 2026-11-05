@@ -1,0 +1,33 @@
+name: Bug fix
+description: Something does not work as the docs say.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Never paste a real Gate credential, API key or private key. For a security problem, email security@bindable-ai.com instead.
+  - type: input
+    id: version
+    attributes:
+      label: Package and version
+      placeholder: "bindable-gate 0.4.1"
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where it runs
+      placeholder: "macOS 15, OpenClaw 2026.10 in a NemoClaw sandbox"
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected, and what happened
+    validations:
+      required: true

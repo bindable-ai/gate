@@ -1,0 +1,57 @@
+{
+  "description": "The shared test vector for agent-signed Proposals: the platform's worked example with the sixth member, target, set to null. persistent_agent_id is the agent's did:webvh DID itself, made up here with a test SCID; agent_key_id names the key under that DID, and the local Tracks name the agent by it. The bytes are what both the Python and the TypeScript Gate must produce; each signature was made once, by the side named, with a key whose private half was discarded. Both sides must verify both. ECDSA signatures are randomised, so a new signature differs from these; it must still verify. The platform team's own vector is platform-vector.json (see README.md).",
+  "input": {
+    "persistent_agent_id": "did:webvh:QmWv9fYzR4h3TestScid2Gate8Bindab:bindable-ai.com:agent:5b0e6c1a-2f4d-4c8e-9a71-3d2b8f0e4c19",
+    "action": "send_email",
+    "nonce": "n-0001",
+    "signed_at": "2026-10-26T12:00:00.000Z",
+    "parameters": {
+      "to": "ops@example.com",
+      "subject": "Weekly report",
+      "attachments": 2
+    },
+    "target": null
+  },
+  "bytes": "{\"action\":\"send_email\",\"nonce\":\"n-0001\",\"parameters\":{\"attachments\":2,\"subject\":\"Weekly report\",\"to\":\"ops@example.com\"},\"persistent_agent_id\":\"did:webvh:QmWv9fYzR4h3TestScid2Gate8Bindab:bindable-ai.com:agent:5b0e6c1a-2f4d-4c8e-9a71-3d2b8f0e4c19\",\"signed_at\":\"2026-10-26T12:00:00.000Z\",\"target\":null}",
+  "agent_key_id": "did:webvh:QmWv9fYzR4h3TestScid2Gate8Bindab:bindable-ai.com:agent:5b0e6c1a-2f4d-4c8e-9a71-3d2b8f0e4c19#8d3f2a61-4c7b-4e9a-b1d5-6f0c2e8a9b47",
+  "signatures": [
+    {
+      "made_by": "typescript",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEP2NXBSIWhtld+bqZ/ZgEFR1ZsOUv\nV1HzfBQTqkC4ChgZemQBTJ6pcd81ZVo7beWopreGik5cGngeMw9rTyqVhg==\n-----END PUBLIC KEY-----\n",
+      "agent_signature": "MEUCIG45tMA4nyUceIllY1wHRz90YAqHlAkyAEWA4J/Ko6CiAiEAs8WaXzQswgkYPO2QkeDPsce+02ABgwpBP5+1SCopnMk="
+    },
+    {
+      "made_by": "python",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE+QrZ+m8hc8jb/xWdJNOlREwrGHqg\nhz6st5pHHKcgFpyUwcM2Lseydn5Eu/AIoZe7vElo9OOErlvFioNRQwMQUA==\n-----END PUBLIC KEY-----\n",
+      "agent_signature": "MEUCIQC+5J02mdSky5RT1lrP1naZ6Aj2r7c8nhQLy87Fs3ymiQIgQ8QZo45MQXLcoJkNHDvetac90n42Ud0YkcLLIj8IQS0="
+    }
+  ],
+  "local_tracks": [
+    {
+      "file": "local-track.typescript.jsonl",
+      "made_by": "typescript",
+      "lines": 3,
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAERDfNw8bm1hx90IIClli65OJqb9pz\nJLy9A6bFkqrsWRHNN+hgXi34DNRqRGNElvuVLfjIqNIKZ927+vqZGDnSuQ==\n-----END PUBLIC KEY-----\n"
+    },
+    {
+      "file": "local-track.python.jsonl",
+      "made_by": "python",
+      "lines": 3,
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEwYMz+EdNBaHhVAOAGN9okqExYfwr\nC67Q8lbGs7rik4jvPqRVvdSOylEE7zzwuMNmOPu8frqTFH1inb5VgDgttQ==\n-----END PUBLIC KEY-----\n\n"
+    }
+  ],
+  "offline_records": [
+    {
+      "file": "offline-records.python.jsonl",
+      "made_by": "python",
+      "records": 3,
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEkcKFXraugQpdrpufEBbRqDwxHbk/\neT7vm3tG/PdgEH6ktMgqKm1hPcFBOCtLFNIgRdsml0bHCsT61pn4PwqJLQ==\n-----END PUBLIC KEY-----\n"
+    },
+    {
+      "file": "offline-records.typescript.jsonl",
+      "made_by": "typescript",
+      "records": 3,
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEH2roXYyNw7qiGyeCqsXuNxfCYycR\nVssT2rzIueSeQaW1xyKyS0IgctmEEG+FlmgbVAy6yoCprjCiPpKpnsyrkA==\n-----END PUBLIC KEY-----\n"
+    }
+  ]
+}

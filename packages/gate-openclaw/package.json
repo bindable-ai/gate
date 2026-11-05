@@ -1,0 +1,46 @@
+{
+  "name": "@bindable-ai/gate-openclaw",
+  "version": "0.1.0",
+  "description": "The Bindable Gate for OpenClaw: every tool call, built-in and MCP, reviewed by Bindable before it runs.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "openclaw": {
+    "extensions": [
+      "./dist/index.js"
+    ]
+  },
+  "homepage": "https://docs.bindable-ai.com",
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "bindable",
+    "gate",
+    "agent"
+  ],
+  "scripts": {
+    "build": "rm -rf dist && node build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node build.mjs && vitest run",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@bindable-ai/gate": "0.1.0"
+  }
+}

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+dist/
+
+# TypeScript packages
+node_modules/
+*.tgz
+.venvs/

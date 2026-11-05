@@ -1,0 +1,33 @@
+{
+  "description": "An agent-signed Proposal, for a Gate to assert its signing against. The private key is SHA-256 of private_key_seed (UTF-8 bytes) read as a big-endian integer; it is a test key, published here, and signs nothing real. The signature is deterministic (RFC 6979), so a correct signer reproduces agent_signature byte for byte. The did is a test identity: its SCID is the base58btc SHA-256 multihash of the UTF-8 string \"bindable agent-signed proposal test vector, scid\", not of a DID log entry, so it resolves nowhere.",
+  "private_key_seed": "bindable agent-signed proposal test vector, key 1",
+  "public_key_jwk": {
+    "kty": "EC",
+    "crv": "P-256",
+    "x": "ALLIFhJAFfxmenP0nMv_xd6VQzR-T0MEBA90uLqcKeU",
+    "y": "dLjXVKUUCRpByglQTltcIhV1xYtjAhrzc37VykmsNoI"
+  },
+  "did": "did:webvh:QmY1qgmvFfHmFqHXeLHcSE1jHMi95tLJGYtW6WQ6HxpuxE:bindable-ai.com:agent:7f3a2c1e-5b4d-4e6f-8a9b-0c1d2e3f4a5b",
+  "proposal": {
+    "agent_id": "7f3a2c1e-5b4d-4e6f-8a9b-0c1d2e3f4a5b",
+    "action_type": "send_invoice",
+    "target": "customer:4471",
+    "payload": {
+      "amount": 700,
+      "currency": "USD",
+      "lines": [
+        {
+          "sku": "A-1",
+          "qty": 2
+        }
+      ]
+    },
+    "nonce": "n-0001"
+  },
+  "signed_at": "2026-10-26T12:00:00.000Z",
+  "agent_key_id": "did:webvh:QmY1qgmvFfHmFqHXeLHcSE1jHMi95tLJGYtW6WQ6HxpuxE:bindable-ai.com:agent:7f3a2c1e-5b4d-4e6f-8a9b-0c1d2e3f4a5b#0e1f2a3b-4c5d-4e6f-9a0b-1c2d3e4f5a6b",
+  "signing_input": "{\"action\":\"send_invoice\",\"nonce\":\"n-0001\",\"parameters\":{\"amount\":700,\"currency\":\"USD\",\"lines\":[{\"qty\":2,\"sku\":\"A-1\"}]},\"persistent_agent_id\":\"did:webvh:QmY1qgmvFfHmFqHXeLHcSE1jHMi95tLJGYtW6WQ6HxpuxE:bindable-ai.com:agent:7f3a2c1e-5b4d-4e6f-8a9b-0c1d2e3f4a5b\",\"signed_at\":\"2026-10-26T12:00:00.000Z\",\"target\":\"customer:4471\"}",
+  "signing_input_sha256_hex": "d5fe2f3934252827bedc9bb8cdfce49e57eee6bf6a8eb49ed09947824ee354dd",
+  "agent_signature": "MEQCIGokXMLMZEw8LzYu3SwLgiw8346M1HQG2FJqJUoNwYyZAiA5idiRm7cil2hn1vUWt2qDnpHMFBLTcCEn7sDJgiiC+w==",
+  "signature_encoding": "ECDSA P-256 with SHA-256, deterministic (RFC 6979), DER, base64 (RFC 4648 section 4, padded)"
+}

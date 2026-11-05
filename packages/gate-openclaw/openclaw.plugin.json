@@ -1,0 +1,12 @@
+{
+  "id": "bindable-gate",
+  "name": "Bindable Gate",
+  "description": "Every tool call, built-in and MCP, reviewed by Bindable before it runs. Fails closed.",
+  "version": "0.1.0",
+  "activation": { "onStartup": true },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}
